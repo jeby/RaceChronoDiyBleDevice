@@ -132,6 +132,22 @@ car is shut down with no key.
 
 Optionally, put everything into a nice enclosure, possibly not cardboard :D
 
+### UPDATE: MINIATURIZED VERSION
+
+If your not afraid of using the solder iron, you can work to improve the layout
+and miniaturize the assembly. Here is an example made using a double sided
+PCB prototype boards. I've soldered the ItsyBitsy and the step down to 
+one side of the board, and the MCP board to the other side.
+
+![Miniaturized version, ItsyBitsy side](images/ITSYBITSY_SIDE.jpg)
+![Miniaturized version, MCP2515 side](images/MCP2515_SIDE.jpg)
+![Miniaturized version, thicnkess](images/MIN_3.jpg)
+![Miniaturized version, wiring diagram](images/SCHEME.png)
+
+To do this first you need to solder all the pins and all the wiring to the PCB board. 
+Once you have done that you can proceed soldering the pins to the ItsyBitsy and step down to one side
+and to the MCP board to the other. You can use male-female headers if you want to detatch the boards.
+
 
 ## Tweaking to work with your car
 
