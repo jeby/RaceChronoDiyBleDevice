@@ -58,14 +58,13 @@ Byte | Meaning
 1 | WIP
 2 | WIP
 3 | WIP
-4 | WIP
-5 | WIP
+4 & 5 | Lateral Acceleration
 6 | WIP
 7 | WIP
 
 Channel name | Equation | Notes
 ------------ | -------- | -----
-... | ... | ...
+Lateral Acceleration (G) | `9.81*(bytestouint(raw,4,2)/1000.00-2.00)` | The `9.1*` is needed because transfer function is calculating Gs, while RaceChrono internally use m/s^2. The function may need to be adjusted but so far is giving nice results.
 
 ## PID 0x200
 
@@ -109,7 +108,7 @@ Channel name | Equation | Notes
 ------------ | -------- | -----
 Engine RPM | `bytestouint(raw,0,2)/4.00` | 
 Speed | `((bytestoint(raw,4,2)/100.00)-100)/3.6` | Raw speed data is given in km/h with a 100 km/h offset. The "3.6" at the end of the equation is needed to switch to m/s that is the unit used internally for calculation by RaceChrono. In the calculation RaceChrono will then multiply automatically for the correct value to transform the m/s to your choice of units (i.e. km/h or mph).
-Accelerator Position | `bytestoint(raw,6,1)*2.00` | This is a percentage, increments of 0.5%
+Accelerator Position | `bytestoint(raw,6,1)/2.00` | This is a percentage, increments of 0.5%
 
 ## PID 0x215
 
@@ -184,6 +183,29 @@ Coolant temperature | `bytestouint(raw,1,1)-40` | RaceChrono does calculation in
 Throttle position | `100*bytestouint(raw,1,1)/255` | Scale may need adjustment. This ID should refer to absolute opening value, i.e. taking into account the opening at idle. Still, the value at idle for my measurements seems too high (11%...)
 Ignition advance
 Intake temperature | `bytestouint(raw,4,1)-40` | RaceChrono does calculation in °C then converts to your unit of choice
+
+## PID 0x430
+
+Update frequency: 1 times per second.
+
+`0x430` contains information about fuel level
+
+Byte | Meaning
+---- | -------
+0 | Fuel level percentage
+1 | WIP
+2 | Always 00
+3 | Always 00
+4 | Always 00
+5 | Always 00
+6 | Always 00
+7 | Always 00
+
+Channel name | Equation | Notes
+------------ | -------- | -----
+Fuel Level | `bytestoint(raw,0,1)/2.55` | It can vary suddenly depending on accelerations and slopes, needs filtering
+
+
 
 ## PID 0x4b0
 
