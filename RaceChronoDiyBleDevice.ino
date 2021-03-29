@@ -135,7 +135,7 @@ public:
       case 0x4b0: /* 4 wheels speed */
       case 0x081: /* steering angle */
       case 0x200: /* Throttle Positon (it is also available in ID 215) */
-      case 0x090: */ /* lateral acceleration */
+      case 0x090: /* lateral acceleration */
         pidExtra->updateRateDivider = 4;
         break;
 
