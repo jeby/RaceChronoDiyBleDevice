@@ -135,7 +135,7 @@ public:
       case 0x4b0: /* 4 wheels speed */
       case 0x081: /* steering angle */
       case 0x200: /* Throttle Positon (it is also available in ID 215) */
-      /* case 0x090: */ /* IN PROGRESS */
+      case 0x090: */ /* lateral acceleration */
         pidExtra->updateRateDivider = 4;
         break;
 
@@ -232,7 +232,7 @@ bool startCanBusReader() {
     /* filter1= */ 0x085,
 
     /* mask1= */   0b11111111111 /* full match only */,
-    /* filter2= */ 0x4b0,
+    /* filter2= */ 0x090,
     /* filter3= */ 0x240,
     /* filter4= */ 0x081,
     /* filter5= */ 0x231,
