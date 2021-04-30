@@ -153,7 +153,7 @@ Byte | Meaning
 
 Channel name | Equation | Notes
 ------------ | -------- | -----
-Digital | `(bitstouint(raw,15,1)-4)/2` | 0 - 1 value
+Clutch Pedal Position | `bitstouint(raw,14,1)*100` | 0 - 100% value
 
 
 ## PID 0x240
