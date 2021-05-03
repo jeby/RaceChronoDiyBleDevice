@@ -20,7 +20,7 @@ Byte | Meaning
 
 Channel name | Equation | Notes
 ------------ | -------- | -----
-Steering angle | `bytesToInt(raw, 2, 2)` | positive values are from centered position (0) to right, negative otherwise
+Steering angle | `-1.00*bytesToInt(raw, 2, 2)` | Change of sign to reflect how RaceChrono diplays the data.
 
 ## PID 0x085
 
@@ -64,7 +64,7 @@ Byte | Meaning
 
 Channel name | Equation | Notes
 ------------ | -------- | -----
-Lateral Acceleration (G) | `9.81*(bytestouint(raw,4,2)/1000.00-2.00)` | The `9.1*` is needed because transfer function is calculating Gs, while RaceChrono internally use m/s^2. The function may need to be adjusted but so far is giving nice results.
+Lateral Acceleration (G) | `-9.81*(bytestouint(raw,4,2)/1000.00-2.00)` | The `9.1*` is needed because transfer function is calculating Gs, while RaceChrono internally use m/s^2. The function may need to be adjusted but so far is giving nice results. Change of sign to reflect how RaceChrono diplays the data.
 
 ## PID 0x200
 
